@@ -1,9 +1,9 @@
 import React from "react";
 import { MovieListItem } from "components/MoviesItem/Moviesitem";
-import { PageTitle, FilmsList } from "./MoviesList.styled";
+import { FilmsList } from "./MoviesList.styled";
+
 export const MoviesList = ({movies}) =>(
     <main>
-        <PageTitle>Trending today</PageTitle>
         <FilmsList>
             {movies.map(({ id, title, poster_path }) =>
                 <MovieListItem

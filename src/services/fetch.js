@@ -9,3 +9,9 @@ export  async function getPopularMovies() {
    `${URL}/trending/movie/day?api_key=${KEY}`)
    .then(res => res.data);
 };
+
+export async function searchMovie(query) {
+  return await axios.get(
+    `${URL}search/movie?api_key=${KEY}&page=1&include_adult=false&query=${query}`)
+    .then(res => res.data)
+};
