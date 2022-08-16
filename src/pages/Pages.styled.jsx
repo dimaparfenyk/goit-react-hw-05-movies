@@ -38,3 +38,7 @@ display: inline-block;
     }
 `
 
+// export const DetailedInfoBox = styled.div`
+
+// `
+

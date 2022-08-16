@@ -2,22 +2,25 @@ import React from "react";
 import { Link} from 'react-router-dom';
 import { FilmCard, FilmDescription, FilmTitle } from "./MoviesItem.styled";
 
-export const MovieListItem = ({ id, title, src }) => {
-   
+export const MovieListItem = (movie) => {
+    console.log(movie)
     return (
-        <Link style={{
-            textDecoration: 'none',
-            fontSize: '24px',
-            color:'#684929'}}
-            to={`/movies/${id}`}
-        >
-        <FilmCard
-            key={id}>
-            <img src={src} alt='' width={320} />
+        <FilmCard>
+        <Link
+            key={movie.id}
+            to={`/movies/${movie.id}`}
+                style={{ textDecoration: 'none' }
+                }>
+                
+            <img src={movie.src} alt={movie.title} width={360} />
+            
             <FilmDescription>
-            <FilmTitle>{title}</FilmTitle>
+                    <FilmTitle>{movie.title} ({new Date(movie.release).getFullYear()})
+                    </FilmTitle> 
+                    
             </FilmDescription>
-            </FilmCard>
+            
             </Link>
+            </FilmCard>
         );
 };

@@ -13,7 +13,6 @@ export default function Movies() {
     const movieName = searchParams.get('movieName')??'';
 
     useEffect(() => {
-    console.log('1')
         if (movieName === '') return;
         
         searchMovie(movieName).then(movie => {
@@ -26,7 +25,7 @@ export default function Movies() {
 
         e.preventDefault();
 
-        const query = e.currentTarget.children.movieName.value;
+        const query = e.currentTarget.elements.movieName.value;
         if (query.trim() === '') return;
     
         setSearchParams({ movieName: query});

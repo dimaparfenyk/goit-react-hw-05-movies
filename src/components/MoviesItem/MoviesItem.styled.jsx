@@ -4,15 +4,22 @@ export const FilmCard = styled.li`
 display:flex;
 align-items:center;
 flex-direction:column;
-margin-right:30px;
-margin-bottom:30px;
-overflow:hidden;
+width:360px;
+margin-right:40px;
+margin-bottom:40px;
 border-radius:8px;
 `
 export const FilmDescription = styled.div`
-    width: 100%;
+display:flex;
+flex-direction:row;
+    align-items: center;
+    justify-content: space-around;
 `
 
 export const FilmTitle = styled.p`
-text-align: center;
+display: inline-block;
+font-size: 18px;
+color:black;
+font-weight: 600;
+text-transform: uppercase;
 `

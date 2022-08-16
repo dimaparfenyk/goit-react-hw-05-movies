@@ -22,6 +22,7 @@ export const StyledNavLink = styled(NavLink)`
     line-height: 16px;
     min-width: 150px;
     height: 40px;
+    color:black;
     background-color:#ffb539;
     margin-right:40px;
 `

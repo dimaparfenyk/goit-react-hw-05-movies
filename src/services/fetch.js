@@ -15,3 +15,9 @@ export async function searchMovie(query) {
     `${URL}search/movie?api_key=${KEY}&page=1&include_adult=false&query=${query}`)
     .then(res => res.data)
 };
+
+export  async function getMovieDetails(ID) {
+  return await axios.get(
+    `${URL}movie/${ID}?api_key=${KEY}&language=en-US`)
+   .then(res => res.data);
+};
