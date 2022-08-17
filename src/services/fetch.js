@@ -16,8 +16,20 @@ export async function searchMovie(query) {
     .then(res => res.data)
 };
 
-export  async function getMovieDetails(ID) {
+export  async function getMovieDetails(id) {
   return await axios.get(
-    `${URL}movie/${ID}?api_key=${KEY}&language=en-US`)
+    `${URL}movie/${id}?api_key=${KEY}&language=en-US`)
+   .then(res => res.data);
+};
+
+export  async function getCast(id) {
+  return await axios.get(
+    `${URL}movie/${id}/credits?api_key=${KEY}&language=en-US`)
+   .then(res => res.data);
+};
+
+export  async function getReviews(id) {
+  return await axios.get(
+    `${URL}movie/${id}/reviews?api_key=${KEY}&language=en-US`)
    .then(res => res.data);
 };

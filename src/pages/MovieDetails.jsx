@@ -1,33 +1,34 @@
-import { useState, useEffect } from 'react';
-import {  useParams, NavLink} from 'react-router-dom';
+import { useState, useEffect, Suspense} from 'react';
+import {  useParams, NavLink , Outlet,  useNavigate} from 'react-router-dom';
 
-import { MovieInfoNav } from "components/FilmInfo/MovieNavInfo"
 import { MovieListItem } from 'components/MoviesItem/Moviesitem';
 import { getMovieDetails } from 'services/fetch';
-import { Container } from 'components/FilmInfo/MovieInfo.styled';
+import { Container, NavBox } from 'components/FilmInfo/MovieInfo.styled';
 import { DetailedMovieInfo } from 'components/FilmInfo/DetailedInfo';
 
 export default function MovieDetails() {
-    const [movie, setMovie] = useState([]);
-    const [movieGenre, setMovieGenre]=useState('')
-    const {movieId}  = useParams();
+  const [movie, setMovie] = useState([]);
+  const [movieGenre, setMovieGenre] = useState('');
+  const { movieId } = useParams();
+  const navigate = useNavigate();
+  
+  const goBack = () => navigate(-1);
   
   useEffect(() => {
       getMovieDetails(movieId).then(movie =>
-      {
-          setMovie(movie)
-          setMovieGenre(movie.genres)
-      }
-      ).then( )
+      {setMovie(movie)
+      setMovieGenre(movie.genres)}
+      )
   }, [ movieId]);
     
   return (
-    <div style={{padding:'15px'}}>
-          <NavLink to="/"
+    <main style={{padding:'15px'}}>
+          <button onClick={goBack}
               style={{
                   textTransform: 'uppercase',
                   backgroundColor: '#ffb539',
-                  width:'80px',
+                width: '80px',
+                  border:'none',
                   textDecoration: 'none',
                   color:'black',
                   marginBottom: '28px',
@@ -37,7 +38,7 @@ export default function MovieDetails() {
                   fontWeight:'600',
                   cursor: ' pointer',
                   textAlign:'center,'
-              }}> Go Back</NavLink>
+              }}> Go Back</button>
 
             <Container>
                 <MovieListItem
@@ -54,8 +55,20 @@ export default function MovieDetails() {
                     overview={movie.overview} 
                     genres={movieGenre}/>                        
           </Container>
-          
-          <MovieInfoNav  />
-        </div> 
+     
+          <NavBox>
+                <h2>Additional information:</h2>
+                <ul>
+                  <li> <NavLink to="cast">Cast</NavLink></li>
+                  <li> <NavLink to="reviews">Reviews</NavLink></li>
+                </ul>  
+        
+      </NavBox>
+      
+     {/* <Suspense fallback={<div>Loading...</div>}>
+          <Outlet />
+      </Suspense>    */}
+      
+    </main> 
   );
 }

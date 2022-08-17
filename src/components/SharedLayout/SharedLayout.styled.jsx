@@ -8,6 +8,10 @@ padding: 100px 15px;
 background:#0B221C;
 `
 
+export const Container = styled.div`
+
+`
+
 export const StyledNavLink = styled(NavLink)`
     justify-content: center;
     align-items: center;
