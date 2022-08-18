@@ -1,9 +1,10 @@
-import { useState, useEffect, Suspense} from 'react';
-import {  useParams, NavLink , Outlet,  useNavigate} from 'react-router-dom';
+import { useState, useEffect} from 'react';
+import { useParams, useNavigate,useLocation, Outlet} from 'react-router-dom';
 
 import { MovieListItem } from 'components/MoviesItem/Moviesitem';
 import { getMovieDetails } from 'services/fetch';
 import { Container, NavBox } from 'components/FilmInfo/MovieInfo.styled';
+import { StyledNavLink, GoBackButton, SubTitle } from './Pages.styled';
 import { DetailedMovieInfo } from 'components/FilmInfo/DetailedInfo';
 
 export default function MovieDetails() {
@@ -11,8 +12,11 @@ export default function MovieDetails() {
   const [movieGenre, setMovieGenre] = useState('');
   const { movieId } = useParams();
   const navigate = useNavigate();
-  
-  const goBack = () => navigate(-1);
+  const location = useLocation();
+
+
+  // const goBack = () => navigate(-1);
+  const goBack= () => navigate(location?.state?.from ?? '/');
   
   useEffect(() => {
       getMovieDetails(movieId).then(movie =>
@@ -23,22 +27,7 @@ export default function MovieDetails() {
     
   return (
     <main style={{padding:'15px'}}>
-          <button onClick={goBack}
-              style={{
-                  textTransform: 'uppercase',
-                  backgroundColor: '#ffb539',
-                width: '80px',
-                  border:'none',
-                  textDecoration: 'none',
-                  color:'black',
-                  marginBottom: '28px',
-                  display: 'block',
-                  padding: '10px',
-                  borderRadius: '8px',
-                  fontWeight:'600',
-                  cursor: ' pointer',
-                  textAlign:'center,'
-              }}> Go Back</button>
+          <GoBackButton onClick={goBack}> Go Back </GoBackButton>
 
             <Container>
                 <MovieListItem
@@ -55,20 +44,18 @@ export default function MovieDetails() {
                     overview={movie.overview} 
                     genres={movieGenre}/>                        
           </Container>
-     
+    
           <NavBox>
-                <h2>Additional information:</h2>
-                <ul>
-                  <li> <NavLink to="cast">Cast</NavLink></li>
-                  <li> <NavLink to="reviews">Reviews</NavLink></li>
-                </ul>  
+                <SubTitle>Additional information:</SubTitle>
+                <ul style={{listStyle:'none',}}>
+                  <li> <StyledNavLink to="cast">Cast</StyledNavLink></li>
+                  <li> <StyledNavLink to="reviews">Reviews</StyledNavLink></li>
+                </ul> 
+
+        <Outlet />
         
       </NavBox>
-      
-     <Suspense fallback={<div>Loading...</div>}>
-          <Outlet />
-      </Suspense>   
-      
+   
     </main> 
   );
 }

@@ -8,7 +8,12 @@ export const MovieListItem = (movie) => {
             key={movie.id}
             to={`/movies/${movie.id}`}
                 style={{ textDecoration: 'none'}}> 
-            <img src={movie.src} alt={movie.title} width={360} />
+                <img
+                    src={movie.src}
+                    alt={movie.title}
+                    width={360} 
+                    style={{ marginBottom: '20px'}}
+                    />
             
             <FilmDescription>
                 <FilmTitle>{movie.title} ({new Date(movie.release).getFullYear()})
