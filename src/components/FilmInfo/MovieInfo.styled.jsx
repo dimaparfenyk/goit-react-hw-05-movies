@@ -21,7 +21,16 @@ flex-direction: column;
 
 export const Container = styled.div`
 display:flex;
+margin-bottom: 40px;
 `
+export const MovieBox = styled.div`
+display:flex;
+flex-direction:column;
+align-items:center;
+margin-right:20px;
+margin-bottom:20px;
+`
+
 export const SubTitle = styled.p`
 font-size: 32px;
 font-weight:700;
@@ -39,7 +48,6 @@ list-style:none;
 display:flex;
 flex-direction:row;
 padding:0;
-margin:0 auto 120px auto;
 `
 
 export const GenreItem = styled.li`

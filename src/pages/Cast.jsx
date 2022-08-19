@@ -17,7 +17,7 @@ export default function Cast() {
         <div>
             <CastList>
                 {cast.map(({ profile_path, name, character, cast_id }) => (
-                    <CastItem key={cast_id}>
+                    <CastItem key={cast_id} >
                         <img
                             src={profile_path
                                 ?`https:image.tmdb.org/t/p/w500/${profile_path}`
@@ -26,12 +26,15 @@ export default function Cast() {
                             width={160}
                             height={225}
                             style={{
-                                borderRadius: '8px',
-                            marginBottom:'10px'}} />
+                            borderRadius: '8px'}} />
+                        <div style={{
+                            padding:'5px '}}>
                             <CastText
-                            style={{ marginBottom: '10px' }}>
+                            style={{ marginBottom: '5px' }}>
                             {name}</CastText>
-                        <CastText>Character:{character}</CastText>
+                            <CastText>Character: {character}
+                            </CastText>
+                        </div>
                     </CastItem>)
                 )}
             </CastList>

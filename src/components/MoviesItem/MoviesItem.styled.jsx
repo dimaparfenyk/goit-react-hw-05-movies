@@ -12,14 +12,20 @@ border-radius:8px;
 export const FilmDescription = styled.div`
 display:flex;
 flex-direction:row;
-    align-items: center;
-    justify-content: space-around;
+align-items: baseline;
+justify-content: space-around;
 `
 
 export const FilmTitle = styled.p`
 display: inline-block;
-font-size: 18px;
+font-size: 22px;
 color:black;
-font-weight: 600;
+font-weight: 700;
 text-transform: uppercase;
+margin-bottom:15px;
+`
+
+export const FilmRate = styled.p`
+font-size: 20px;
+font-weight: 600;
 `

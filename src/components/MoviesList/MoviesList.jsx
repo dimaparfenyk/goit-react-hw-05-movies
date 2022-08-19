@@ -1,6 +1,9 @@
 import React from "react";
+import PropTypes from 'prop-types';
+
 import { MovieListItem } from "components/MoviesItem/Moviesitem";
 import { FilmsList } from "./MoviesList.styled";
+import defaultMovie from "../../images/defaultMovie.png"
 
 export const MoviesList = ({movies}) =>(
     <main>
@@ -9,7 +12,9 @@ export const MoviesList = ({movies}) =>(
                 <MovieListItem
                     key={id}
                     id={id}
-                    src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                    src={poster_path
+                        ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+                        :defaultMovie}
                     title={title} 
                     release={release_date}
                     vote={vote_average}
@@ -17,4 +22,8 @@ export const MoviesList = ({movies}) =>(
         )}
         </FilmsList>
     </main>);
+
+MoviesList.propTypes = {
+        movies:PropTypes.array.isRequired,
+    }
 

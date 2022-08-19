@@ -82,7 +82,7 @@ margin-right: -20px;
 
 export const CastItem = styled.li`
 width:160px;
-height:300px;
+height:305px;
 overflow: hidden;
 margin-bottom: 20px;
 margin-right: 20px;

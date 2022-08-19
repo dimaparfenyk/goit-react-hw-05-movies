@@ -1,5 +1,6 @@
 import { Link} from 'react-router-dom';
 import { FilmCard, FilmDescription, FilmTitle } from "./MoviesItem.styled";
+import PropTypes from 'prop-types';
 
 export const MovieListItem = (movie) => {
     return (
@@ -23,3 +24,11 @@ export const MovieListItem = (movie) => {
         </FilmCard>
         );
 };
+
+MovieListItem.propTypes = {
+    id: PropTypes.number.isRequired,
+    release: PropTypes.string,
+    src: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    vote:PropTypes.number,
+}
