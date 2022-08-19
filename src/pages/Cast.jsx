@@ -19,14 +19,12 @@ export default function Cast() {
                 {cast.map(({ profile_path, name, character, cast_id }) => (
                     <CastItem key={cast_id} >
                         <img
-                            src={profile_path
-                                ?`https:image.tmdb.org/t/p/w500${profile_path}`
+                            src={profile_path?`https://image.tmdb.org/t/p/w500${profile_path}`
                                 : defaultActorImg}
                             alt={name}
                             width={160}
                             height={225}
-                            style={{
-                            borderRadius: '8px'}} />
+                            style={{ borderRadius:'8px'}} />
                         <div style={{
                             padding:'5px '}}>
                             <CastText
