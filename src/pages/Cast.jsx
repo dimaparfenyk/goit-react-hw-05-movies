@@ -20,7 +20,7 @@ export default function Cast() {
                     <CastItem key={cast_id} >
                         <img
                             src={profile_path
-                                ?`https:image.tmdb.org/t/p/w500/${profile_path}`
+                                ?`https:image.tmdb.org/t/p/w500${profile_path}`
                                 : defaultActorImg}
                             alt={name}
                             width={160}
